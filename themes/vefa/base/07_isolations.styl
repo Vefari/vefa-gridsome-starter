@@ -1,0 +1,94 @@
+// @domain      ELEMENT MARGINS
+// @namespace   iso:
+// +++++++++++++++++++++++++++++++++++++++++
+isoLimit = limits.isolations
+
+.iso{":"}
+    if !!((isoLimit)px)
+        &xyEq
+            +contains()
+                margin: 1px
+
+        &xEq
+            +contains()
+                margin-x: 1px
+
+            &Auto
+                +contains()
+                    margin-x: auto
+
+        &xStart
+            +contains()
+                margin-left: 1px
+
+            &Auto
+                +contains()
+                    margin-left: auto
+
+        &xEnd
+            +contains()
+                margin-right: 1px
+
+            &Auto
+                +contains()
+                    margin-right: auto
+
+        &yEq
+            +contains()
+                margin-y: 1px
+
+        &yStart
+            +contains()
+                margin-top: 1px
+
+            &Auto
+                +contains()
+                    margin-top: auto
+
+        &yEnd
+            +contains()
+                margin-bottom: 1px
+
+            &Auto
+                +contains()
+                    margin-bottom: auto
+
+        for i in isoLimit
+            num = i/100
+            num = (i is 0) ? 0 : num
+            num = (i is 10) ? .125 : num
+
+            &xyEq
+                &{i}
+                    +contains()
+                        margin: ratio(num)
+
+            &xEq
+                &{i}
+                    +contains()
+                        margin-x: ratio(num)
+
+            &xStart
+                &{i}
+                    +contains()
+                        margin-left: ratio(num)
+
+            &xEnd
+                &{i}
+                    +contains()
+                        margin-right: ratio(num)
+
+            &yEq
+                &{i}
+                    +contains()
+                        margin-y: ratio(num)
+
+            &yStart
+                &{i}
+                    +contains()
+                        margin-top: ratio(num)
+
+            &yEnd
+                &{i}
+                    +contains()
+                        margin-bottom: ratio(num)

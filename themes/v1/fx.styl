@@ -1,0 +1,57 @@
+.fx{":"}
+    +class-partial()
+        &,
+        &::after,
+        &::before
+            --fx-delay: 0s
+            transition-delay: var(--fx-delay, 0s)
+            transition-property: none
+            transition-duration: fx.quick.time
+            transition-timing-function: fx.quick.func
+
+    &shift
+        +class-partial()
+            &,
+            &::after,
+            &::before
+                transition-property: all
+
+    &containRxn
+        +class-partial()
+            pointer-events: none
+
+            > *
+                pointer-events: auto
+
+
+
+[class*="fx:fadeOut"],
+[class~="fx:fadeOut-enter-to"]
+    opacity: 0
+
+[class~="fx:fadeOut-enter"]
+    opacity: 1
+
+[class~="fx:fadeOut-enter-active"]
+    transition-duration: .25s
+    transition-property: opacity
+    will-change: opacity
+
+[class*="--dx:delay5"]
+    --fx-delay: 3s
+
+
+.is-disabled
+[disabled]
+    filter: grayscale(1) opacity(.5)
+    pointer-events: none
+
+
+// .--h{":"}
+//     &bright
+//         +class-partial()
+//             // filter: brightness(1)
+//             transition-duration: fx.medium.time
+
+//             &:hover
+//                 filter: brightness(calc(1 + var(--fx-bright)))

@@ -1,0 +1,271 @@
+// @domain      VISUAL BORDERS
+// @namespsace  edge:
+// +++++++++++++++++++++++++++++++++
+.edge{":"}
+    +contains()
+        border-color: var(--active-edge, currentColor)
+        border-style: solid
+        border-width: 0
+
+    &hr
+        +contains()
+            // <HR> can be useful delineators, so lets make them "hairline borders"
+            // and now we can assign a motif/background to them
+            height: var(--edge-width, 1px)
+            background-clip: content-box
+            background-color: var(--active-bg, currentColor)
+
+    &vr
+        +contains()
+            // <HR> can be useful delineators, so lets make them "hairline borders"
+            // and now we can assign a motif/background to them
+            width: var(--edge-width, 1px)
+            background-clip: content-box
+            background-color: var(--active-bg, currentColor)
+
+    // BORDER X AXIS
+    // +++++++++++++++++++++++++++++++++
+    &xEq
+        +contains()
+            border-left-width: var(--edge-width, 1px)
+            border-right-width: var(--edge-width, 1px)
+
+
+    &xEq0
+        +contains()
+            border-left: 0
+            border-right: 0
+
+    &xStart
+        +contains()
+            border-left-width: var(--edge-width, 1px)
+
+    &xStart0
+        +contains()
+            border-left: 0
+
+    &xEnd
+        +contains()
+            border-right-width: var(--edge-width, 1px)
+
+    &xEnd0
+        +contains()
+            border-right: 0
+
+    // BORDER Y AXIS
+    // +++++++++++++++++++++++++++++++++
+    &yEq
+        +contains()
+            border-bottom-width: var(--edge-width, 1px)
+            border-top-width: var(--edge-width, 1px)
+
+
+    &yEq0
+        +contains()
+            border-bottom: 0
+            border-top: 0
+
+    &yStart
+        +contains()
+            border-top-width: var(--edge-width, 1px)
+
+    &yStart0
+        +contains()
+            border-top: 0
+
+    &yEnd
+        +contains()
+            border-bottom-width: var(--edge-width, 1px)
+
+    &yEnd0
+        +contains()
+            border-bottom: 0
+
+
+    // BORDER XY AXIS
+    // +++++++++++++++++++++++++++++++++
+    &xyEq
+        +contains()
+            border-width: var(--edge-width, 1px)
+
+    &xyEq0
+        +contains()
+            border: 0
+
+// BORDER COLORS
+// will take the color from motif's set variables
+// +++++++++++++++++++++++++++++++++
+.--def{":"}
+    &primary
+        +contains()
+            --active-edge: var(--edge-primary, currentColor)
+
+    &secondary
+        +contains()
+            --active-edge: var(--edge-secondary, currentColor)
+
+    &tint
+        +contains()
+            --active-edge: var(--edge-tint, currentColor)
+
+    &shade
+        +contains()
+            --active-edge: var(--edge-shade, currentColor)
+
+    accent
+        +contains()
+            --active-edge: var(--edge-accent, currentColor)
+
+    &warn
+        +contains()
+            --active-edge: var(--edge-warn, currentColor)
+
+.hr--def{":"}
+    +contains()
+        --active-bg: var(--active-edge, currentColor)
+
+
+.vr--def{":"}
+    +contains()
+        --active-bg: var(--active-edge, currentColor)
+
+
+// SHADOWS
+// -----------------------------------------------------------
+--drop{":"}
+    +contains()
+        position: relative
+        transform-style: preserve-3d
+        z-index: 1
+
+        &::after
+        &::before
+            content: ""
+            display: block
+            bottom: 0
+            left: 0
+            position: absolute
+            right: 0
+            transform: translateZ(-1px)
+            top: 0
+            z-index: -1
+
+    &set
+        +contains()
+            &::before
+                opacity: 1
+
+            &::after
+                opacity: 0
+
+        &0
+            +contains()
+                &::before
+                    box-shadow: none
+
+        &50
+            +contains()
+                &::before
+                    box-shadow: 0 1px 2px hsla(#000, 10%), 0 1px 1px hsla(#000, 20%)
+
+        &100
+            +contains()
+                &::before
+                    box-shadow: 0 1px 3px hsla(#000, 12%), 0 1px 2px hsla(#000, 24%)
+
+        &200
+            +contains()
+                &::before
+                    box-shadow: 0 3px 6px hsla(#000, 16%), 0 3px 6px hsla(#000, 23%)
+
+        &300
+            +contains()
+                &::before
+                    box-shadow: 0 10px 20px hsla(#000, 19%), 0 6px 6px hsla(#000, 23%)
+
+        &400
+            +contains()
+                &::before
+                    box-shadow: 0 14px 28px hsla(#000, 25%), 0 10px 10px hsla(#000, 22%)
+
+        &500
+            +contains()
+                &::before
+                    box-shadow: 0 19px 38px hsla(#000, 30%), 0 15px 12px hsla(#000, 22%)
+
+
+    // SHADOWS (REACTIOM)
+    // -----------------------------------------------------------
+    &shift
+        // drop shadow
+        +contains()
+            &::after,
+            &::before
+                will-change: opacity
+
+            +--all-states()
+                &::before
+                    opacity: 0
+
+                &::after
+                    opacity: 1
+
+
+        &0
+            +contains()
+                +--all-states()
+                    &::after
+                        box-shadow: none
+
+        &50
+            +contains()
+                +--all-states()
+                    &::after
+                        box-shadow: 0 1px 2px hsla(#000, 10%), 0 1px 1px hsla(#000, 20%)
+
+        &100
+            +contains()
+                +--all-states()
+                    &::after
+                        box-shadow: 0 1px 3px hsla(#000, 12%), 0 1px 2px hsla(#000, 24%)
+
+        &200
+            +contains()
+                +--all-states()
+                    &::after
+                        box-shadow: 0 3px 6px hsla(#000, 16%), 0 3px 6px hsla(#000, 23%)
+
+        &300
+            +contains()
+                +--all-states()
+                    &::after
+                        box-shadow: 0 10px 20px hsla(#000, 19%), 0 6px 6px hsla(#000, 23%)
+
+        &400
+            +contains()
+                +--all-states()
+                    &::after
+                        box-shadow: 0 14px 28px hsla(#000, 25%), 0 10px 10px hsla(#000, 22%)
+
+        &500
+            +contains()
+                +--all-states()
+                    &::after
+                        box-shadow: 0 19px 38px hsla(#000, 30%), 0 15px 12px hsla(#000, 22%)
+
+
+--radii{":"}
+    +class-partial()
+        --radii: 0
+        &,
+        &::before
+        &::after
+            border-radius: var(--radii)
+
+    &rounded
+        +class-partial()
+            --radii: 3px
+
+    &circle
+        +class-partial()
+            --radii: 50%

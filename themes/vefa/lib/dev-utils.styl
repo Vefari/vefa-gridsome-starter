@@ -1,0 +1,34 @@
+// ==========================================================================
+// Dev Utils
+// helps for layout and alignment on vertical and horizontal grid does not
+// add to width and height; sits one pixel outside of actual width and height.
+// Additionally, a background is added based on the content box, enabling
+// visualization of element padding.
+//
+//
+//
+
+
+o(colorSel=red)
+    outline: 1px solid colorSel
+
+bk(colorSel=red)
+    o()
+    visibility: visible !important
+    background-color: rgba(colorSel, 50%)
+    background-clip: content-box
+
+dev-tools(colorSel=red, namespace=null)
+    .{namespace}bk
+        bk(colorSel)
+
+    .{namespace}o
+        o(colorSel)
+
+    .{namespace}lh-test
+        layers()
+
+        &::after
+            border-bottom: colorSel
+            width: 1000%
+            position: absolute 0px auto auto 0px

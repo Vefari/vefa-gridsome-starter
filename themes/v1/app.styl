@@ -1,0 +1,46 @@
+:root
+    --active-bg: colors.white
+    --active-fg: colors.copy
+    --active-edge: currentColor
+
+    --color-primary: colors.c1
+    --color-secondary: colors.c2
+    --color-tertiary: colors.c3
+    --color-copy: colors.copy
+    --color-neutral: colors.neutral
+    --color-tint: colors.tint
+    --color-shade: colors.shade
+    --color-affirm: colors.affirm
+    --color-warn: colors.warn
+    --color-negative: colors.negative
+
+    --edge-width: 1px
+    --edge-style: solid
+    --edge-primary: currentColor
+    --edge-tint: colors.tint
+    --edge-shade: colors.shade
+
+    --fx-delay: 0s
+    --fx-time: fx.quick.time
+    --fx-bright: 0
+
+html
+    font-display: block
+    font-size: 100%
+    height: 100%
+    text-size-adjust: 100%
+
+body
+    display: flex
+    min-height: 100vh
+    stack: copy
+    caret-color: var(--color-primary)
+
+[role="button"]
+    cursor: pointer
+
+@require "typography"
+@require "motifs"
+@require "controls"
+@require "colors"
+@require "fx"

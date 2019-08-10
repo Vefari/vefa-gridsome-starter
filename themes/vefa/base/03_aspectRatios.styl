@@ -1,0 +1,65 @@
+// +init-break-vars(aspect-ratio)
+
+/:ratio
+    +contains()
+        position: relative
+        overflow: hidden
+        padding: 0
+
+        &::before
+            content: ''
+            display: block
+            height: 0
+            padding-bottom: 100%
+
+        > img
+            height: 100%
+            width: 100%
+            object-fit: cover
+
+
+/:ratio--
+
+    &vars
+        +contains()
+            &::before
+                // display: none
+                padding-bottom: var(--aspect-ratio)
+
+        // +set-break-vars(padding-bottom, aspect-ratio)
+    if (!!(limits.aspectRatios))
+        for item in (limits.aspectRatios)
+            if item == "hLetter"
+                &hLetter
+                    +contains()
+                        &::before
+                            padding-bottom: 77.272% // (100% * (8.5 / 11))
+
+            else if item == "vLetter"
+                &vLetter
+                    +contains()
+                        &::before
+                            padding-bottom: 129.412% // (100% * (11 / 8.5))
+
+            else if item == "Silver"
+                &silver
+                    +contains()
+                        &::before
+                            padding-bottom: 41.425% // calc(100% / 2.414)
+
+            else if item == "Golden"
+                &golden
+                    +contains()
+                        &::before
+                            padding-bottom: 61.801% // calc(100% / 1.618)
+
+            else
+                &{item[0]}x{item[1]}
+                    +contains()
+                        &::before
+                            padding-bottom: (100% / (item[0]/item[1]))
+
+                &{item[1]}x{item[0]}
+                    +contains()
+                        &::before
+                            padding-bottom: (100% / (item[1]/item[0]))

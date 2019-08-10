@@ -1,0 +1,91 @@
+// @domain      FLEX CONTAINERS
+// @namespace   flex
+// +++++++++++++++++++++++++++++++++
+
+.flex{":"}
+    +contains()
+        --gap-xy: 0px
+        --gap-x: var(--gap-xy)
+        --gap-y: var(--gap-xy)
+        display: flex
+        flex-wrap: nowrap
+        gap: var(--gap-y) var(--gap-x)
+        visibility: visible
+        width: 100%
+
+    &v
+        +contains()
+            flex-direction: column
+
+    &vRev
+        +contains()
+            flex-direction: column-reverse
+
+    &vAuto
+        +contains()
+            width: auto
+
+    &h
+        +contains()
+            flex-direction: row
+
+            // may not be needed
+            & > * + *
+                margin-top: 0
+
+    &hRev
+        +contains()
+            flex-direction: row-reverse
+
+    &hAuto
+        +contains()
+            width: auto
+
+.{":"}wrap
+    +contains()
+        flex-wrap: wrap
+
+
+// --p: PRIMARY FLEX AXIS
+// +++++++++++++++++++++++++++++++++
+.--p{":"}
+    &grid
+        +contains()
+            justify-content: space-between
+    &space
+        +contains()
+            justify-content: space-around
+    &start
+        +contains()
+            justify-content: flex-start
+    &end
+        +contains()
+            justify-content: flex-end
+    &middle
+        +contains()
+            justify-content: center
+
+    &full
+        +contains()
+            justify-content: stretch
+
+
+
+// --s: SECONDARY FLEX AXIS
+// +++++++++++++++++++++++++++++++++
+.--s{":"}
+    &start
+        +contains()
+            align-items: flex-start
+    &end
+        +contains()
+            align-items: flex-end
+    &middle
+        +contains()
+            align-items: center
+    &full
+        +contains()
+            align-items: stretch
+    &base
+        +contains()
+            align-items: baseline

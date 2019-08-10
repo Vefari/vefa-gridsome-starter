@@ -1,0 +1,24 @@
+{
+    "plugins": [
+        // "transform-object-rest-spread",
+        // ["transform-class-properties", { "spec": true }],
+        ["@babel/plugin-proposal-class-properties"],
+    ],
+    "presets": [
+        [
+            "env",
+            {
+                "targets": {
+                    "chrome": 63,
+                    "safari" : "10.1",
+                    "firefox": 56,
+                    "edge": 16,
+                    "ios": "10.3"
+                },
+                "modules": false,
+                "useBuiltIns": "usage",
+                "debug": false
+            }
+        ]
+    ]
+}

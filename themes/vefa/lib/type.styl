@@ -1,0 +1,125 @@
+rfs(value)
+    size = round( value / baseFontSize, 3 )
+    return unit( size, "rem" )
+
+
+// Base Line Height
+rlh(value=null, fs=@font-size)
+    size = rfs(value) / fs if unit(fs) == "rem"
+    size = value / fs if unit(fs) == "px"
+    return unit(size, "")
+
+// ==========================================================================
+// Type Stack
+// list your font stack from your type_stacks objecft
+//
+//
+stack(name)
+    type_set = ()
+    if typeStacks
+        for cl, dec in typeStacks
+            if unquote(cl) == name
+                push(type_set, typeStacks[name])
+                sets = shift(type_set)
+
+                for set in type_set
+                    temp = join(", ", set)
+                    push( sets, temp )
+
+                font-family: unquote( join(", ", sets) )
+
+// ==========================================================================
+// Init type
+//
+typeSet(declaration, type_obj=typeSets)
+    fs = ""
+    for cl, dec in type_obj
+        if cl is declaration
+            for prop, val in dec
+                fs = val if prop == "font-size"
+                unless prop is "meta" || prop is "relative"
+                    {prop}: val if (prop is not "font-size") && (prop is not "line-height")
+                    {prop}: val if prop == "font-size"
+                    {prop}: rlh(val, fs) if prop == "line-height"
+
+
+
+// ==========================================================================
+// Webfont
+//
+// load a font-face with a FontSpring bulletproof font declaration
+//
+// @file - the file and its location. no file type
+// @name - user defined font family name to be called
+// @types - otf, ttf, eot, woff, woff2
+// @italic - boolean for if italic version or not
+// @bold - (100 - 900, steps of 100) specify font-weight of font, if applicable
+//
+//
+webfont(file="", name='FF1', types=null, italic=null, bold=null)
+    @font-face
+        font-family: name
+
+        if types and file
+            file = unquote(file)
+            _src_= ()
+            for _type_ in types
+                _temp_ = s('url("%s.otf") format("opentype")', file) if _type_ is "otf"
+                _temp_ = s('url("%s.ttf") format("truetype")', file) if _type_ is "ttf"
+                _temp_ = s('url("%s.eot?") format("embedded-opentype")', file) if _type_ is "eot"
+                _temp_ = s('url("%s.woff") format("woff")', file) if _type_ is "woff"
+                _temp_ = s('url("%s.woff2") format("woff2")', file) if _type_ is "woff2"
+
+                push(_src_, _temp_)
+
+            src: unquote(join(", ", _src_))
+
+        if italic
+            font-style: italic
+
+        if bold
+            _bold_ = bold
+            font-weight: _bold_
+
+
+
+// ==========================================================================
+// Default font stacks
+//
+// Listing of basic (and best supported) font-stacks out of the box for use on
+// sites. See http://unitinteractive.com/blog/2008/06/26/better-css-font-stacks/ (discontinued)
+//
+//
+arial = Arial, "Helvetica Neue", Helvetica, sans-serif
+baskerville = Baskerville, "Times New Roman", Times, serif
+baskervilleTitle = Baskerville, Times, "Times New Roman", serif
+cambria = Cambria, Georgia, Palatino, "Palatino Linotype", "Times New Roman", Times, serif
+centurygothic = "Century Gothic", "Apple Gothic", sans-serif
+consolas = Consolas, "Lucida Console", Monaco, "Courier New", Courier, monospace
+copperplate = Copperplate, "Copperplate Gothic Light", serif
+courier = "Courier New", Courier, monospace
+franklin = "Franklin Gothic Medium", "Arial Narrow Bold", arial
+futura = Futura, "Century Gothic", "Apple Gothic", sans-serif
+garamond = Garamond, "Hoefler Text", "Times New Roman", Times, serif
+garamondTitle = Garamond, "Hoefler Text", Palatino, "Palatino Linotype", serif
+geneva = Geneva, "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif
+genevaTitle = Geneva, Verdana, "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif
+georgia = Georgia, Palatino, "Palatino Linotype", "Times New Roman", Times, serif
+georgiaTitle = Georgia, "Times New Roman", Times, serif
+gillsans = "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif
+gillsansTitle = "Gill Sans", "Gill Sans MT", "Trebuchet MS", Calibri, sans-serif
+gillsansBold = "GillSans-Bold", "Gill Sans MT-Bold", Calibri, "Trebuchet MS", sans-serif
+helvetica = "Helvetica Neue", Arial, Helvetica, sans-serif
+helveticaTitle = Helvetica, "Helvetica Neue", Arial, sans-serif
+impact = Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif
+lucidasans = "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif
+monaco = Monaco, "Courier New", Courier, monospace
+palatino = Palatino, "Palatino Linotype", Georgia, "Times New Roman", Times, serif
+palatinoTitle = Palatino, "Palatino Linotype", "Hoefler Text", "Times New Roman", Times, serif
+tahoma = Tahoma, Geneva, Verdana
+tahomaTitle = Tahoma, Verdana, Geneva
+times = "Times New Roman", Times, serif
+trebuchet = "Trebuchet MS", "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif
+trebuchetTitle = "Trebuchet MS", Tahoma, Arial, sans-serif
+verdana = Verdana, Geneva, Tahoma, sans-serif
+verdanaTitle = Verdana, Tahoma, Geneva, sans-serif

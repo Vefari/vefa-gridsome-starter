@@ -1,0 +1,74 @@
+// @domain      ELEMENT PADDINGS
+// @namespace   pad:
+// +++++++++++++++++++++++++++++++++++++++++
+padLimit = limits.paddings
+
+.pad{":"}
+    if !!((padLimit)px)
+        &xyEq
+            +contains()
+                padding: 1px
+
+        &xEq
+            +contains()
+                padding-x: 1px
+
+        &xStart
+            +contains()
+                padding-left: 1px
+
+        &xEnd
+            +contains()
+                padding-right: 1px
+
+        &yEq
+            +contains()
+                padding-y: 1px
+
+        &yStart
+            +contains()
+                padding-top: 1px
+
+        &yEnd
+            +contains()
+                padding-bottom: 1px
+
+        for i in padLimit
+            num = i/100
+            num = (i is 0) ? 0 : num
+            num = (i is 10) ? .125 : num
+
+            &xyEq
+                &{i}
+                    +contains()
+                        padding: ratio(num)
+
+            &xEq
+                &{i}
+                    +contains()
+                        padding-x: ratio(num)
+
+            &xStart
+                &{i}
+                    +contains()
+                        padding-left: ratio(num)
+
+            &xEnd
+                &{i}
+                    +contains()
+                        padding-right: ratio(num)
+
+            &yEq
+                &{i}
+                    +contains()
+                        padding-y: ratio(num)
+
+            &yStart
+                &{i}
+                    +contains()
+                        padding-top: ratio(num)
+
+            &yEnd
+                &{i}
+                    +contains()
+                        padding-bottom: ratio(num)

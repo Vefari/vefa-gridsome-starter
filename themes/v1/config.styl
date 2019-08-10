@@ -1,0 +1,162 @@
+baseGridSystem = 16px
+baseFontSize = 16px
+baseVerticalRhythm = 16px
+maxSiteWidth = 1480px
+
+breakpoints = {
+    base: 0px,
+    // compressed: 414px,
+    condensed: 660px,
+    economy: 768px,
+    enhanced: 960px,
+    // standard: 1024px,
+    extended: 1200px,
+    full: 1600px
+}
+
+brand = {
+    // brand colors
+    alp1: #1C6987, // all ports (blue)
+    alp2: #7D716D, // empress (grey)
+    alp3: #DE841E, // # zest (orange)
+
+    white: #FFF,
+    black: #181411 // night rider (black)
+}
+
+colors ={
+    // brand colors
+    c1: brand.alp1,
+    c2: brand.alp2,
+    c3: brand.alp3,
+
+    // tones
+    white: brand.white,
+    black: brand.black,
+    neutral:  brand.alp2,
+    tint: #9D8E89, // zorba (grey)
+    shade: #6D635F, // scorpion (grey)
+
+    // named
+    minor: #6D635F,
+    bkg: brand.white,
+    copy: brand.black,
+    hairline: #9D8E89,
+    control: brand.alp3,
+    warn: #E6BB50, // ronchi (yellow)
+    affirm: #84CCA8, // monte carlo (green)
+    negative: #BF7373 // contessa (red)
+}
+
+
+typeStacks = {
+    header: Montserrat arial sans-serif
+    copy: Montserrat arial sans-serif,
+    chrome: Montserrat arial sans-serif
+}
+
+typeWeights = 100 200 400 700 900
+
+typeSets = {
+    broadside: {
+        font-size: 42px,
+        line-height: 48px
+    },
+
+    // was xhead
+    display: {
+        font-size: 36px,
+        line-height: 48px
+    },
+
+    // was hed
+    xhed: {
+        font-size: 31.738px,
+        line-height: 48px
+    },
+
+    // ws subhed
+    hed: {
+        font-size: 25.391px,
+        line-height: 32px
+    },
+
+    // was display
+    subhed: {
+        font-size: 18.75px,
+        line-height: 24px
+    },
+
+    major: {
+        font-size: 17px,
+        line-height: 24px
+    },
+
+    base: {
+        font-size: 16px,
+        line-height: 24px
+    },
+
+    minor: {
+        font-size: 14px,
+        line-height: 24px
+    },
+
+    chrome: {
+        font-size: 13px,
+        line-height: 24px
+    }
+
+    caption: {
+        font-size: 11px,
+        line-height: 16px
+    }
+
+    // subcaption
+}
+
+
+fx = {
+    quick: {
+        time: .25s
+        func: ease-in
+    },
+    medium: {
+        time: .4s
+        func: ease-in
+    }
+}
+
+standardSmall = 0 10 25 50 75 100 150 200 250 300
+standardLarge = 0 10 25 50 75 100 150 200 250 300 350 400 450 500 550 600
+
+limits = {
+    // dx: 100,
+    // dxRhy: 25 50 100 150 200,
+    // dxText: 50 100 150 200,
+    dxView: 100,
+    // dy: 100,
+    // dyRhy: 10 25 33 50 100 150 200 250 300 400 600,
+    // dyText: 50 100 150 200,
+    // dyView: 100,
+    // dxy: 100,
+    dxyRhy: 50 100 150 200 300,
+    dxyText: 50 100 125 150 200,
+    // dxyView: 100,
+    aspectRatios: (9 16) Silver Golden,
+        // # - 1 2
+        // # - 1 3
+        // # - 3 4
+        // # - 4 5
+        // # - 5 8
+    zIndex: (Behind -1) (Base 0) (Above 100) (Nav 200) (Runners 300) (Overlay 400) (Modal 500),
+
+    rhythms: 0 10 25 50 75 100 150 200 250 300,
+    paddings: 0 10 25 50 75 100 150 200 250 300,
+    isolations: 0 10 25 50 75 100 150 200 250 300,
+    gridOffsets: 0 10 25 50 75 100 150 200 250 300,
+
+    gaps: 0 10 25 50 100 150 200,
+    rowGaps: 0 10 25 50 100 150 200,
+    colGaps: 0 10 25 50 100 150 200,
+}

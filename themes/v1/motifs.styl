@@ -1,0 +1,153 @@
+bg-color-convert(c)
+    return "hsla(var(--hue-bg, %s), var(--sat-bg, %s), var(--lux-bg, %s), var(--alpha-bg, %s))" % (hue(c) saturation(c) lightness(c) alpha(c))
+
+fg-color-convert(c)
+    return "hsla(var(--hue-fg, %s), var(--sat-fg, %s), var(--lux-fg, %s), var(--alpha-fg, %s))" % (hue(c) saturation(c) lightness(c) alpha(c))
+
+color-convert(c)
+    return "hsla(var(--hue-color, %s), var(--sat-color, %s), var(--lux-color, %s), var(--alpha-color, %s))" % (hue(c) saturation(c) lightness(c) alpha(c))
+
+.motif{":"}
+    +class-partial()
+        --hue-bg: initial
+        --sat-bg: initial
+        --lux-bg: initial
+        --alpha-bg: initial
+        --hue-fg: initial
+        --sat-fg: initial
+        --lux-fg: initial
+        --alpha-fg: initial
+        background-color: var(--active-bg)
+        color: var(--active-fg)
+        border-color: var(--active-edge)
+
+    &bright
+        +class-partial()
+            --active-bg: bg-color-convert(colors.white)
+            --active-fg: fg-color-convert(colors.copy)
+            // --bg-shade: darken(colors.white, 5%)
+
+            // --color-inverse: colors.white
+            --color-primary: colors.c1
+            --color-secondary: colors.c2
+
+            --edge-tint: hsla(colors.tint, .25)
+
+            .copy a
+                color: var(--color-primary)
+
+                +--all-states()
+                    filter: brightness(125%)
+
+        &--shift:shade
+            +class-partial()
+                --lux-bg: 95%
+
+                +--all-states()
+                    --lux-bg: 85%
+
+    &neutral
+        +class-partial()
+            --active-bg: bg-color-convert(colors.c2)
+            --active-fg: fg-color-convert(colors.white)
+            --edge-tint: colors.tint
+
+    &shade
+        +class-partial()
+            --active-bg: bg-color-convert(colors.shade)
+
+        // &10
+        //     +class-partial()
+        //         --alpha-bg: .1
+// .motif{":"}
+//     &action{":"}
+//         &primary
+//             +attr-contains()
+//                 background-color: colors.c3
+//                 color: hsla(colors.white, .75)
+
+//                 &[class~="fx:shift"]
+//                     +--all-states()
+//                         background-color: saturate(colors.c3, 40%)
+
+//     &control{":"}
+//         &text{":"}anti
+//             +attr-contains()
+//                 color: colors.negative
+
+//                 &[class~="fx:shift"]
+//                     +--all-states()
+//                         background-color: lightness(colors.negative, 95%)
+//                         color: colors.negative
+
+//                     +--active()
+//                         background-color: lightness(colors.negative, 75%)
+//                         color: hsla(colors.white, .75)
+
+//         &primary
+//             +attr-contains()
+//                 background-color: colors.c1
+//                 color: hsla(colors.white, 75%)
+
+//                 &[class~="fx:shift"]
+//                     +--all-states()
+//                         background: saturate(colors.c1, 40%)
+
+//         &neutral
+//             +attr-contains()
+//                 background-color: lighten(colors.c2, 50%)
+//                 color: darken(colors.c2, 50%)
+
+//                 &[class~="fx:shift"]
+//                     +--all-states()
+//                         background: saturate(lighten(colors.c2, 40%), 80%)
+
+//         &pro
+//             +attr-contains()
+//                 background-color: darken(colors.affirm, 25%)
+//                 color: hsla(colors.white, 75%)
+
+//                 &[class~="fx:shift"]
+//                     +--all-states()
+//                         background: saturate(darken(colors.affirm, 25%), 40%)
+
+//         &anti
+//             +attr-contains()
+//                 background-color: colors.negative
+//                 color: hsla(colors.white, 75%)
+
+//                 &[class~="fx:shift"]
+//                     +--all-states()
+//                         background: saturate(colors.negative, 80%)
+
+//         &muted
+//             +attr-contains()
+//                 background-color: colors.white
+//                 color: colors.c1
+
+//                 &[class~="fx:shift"]
+//                     +--all-states()
+//                         background-color: lightness(colors.white, 75%)
+//                         color: hsla(colors.white, .75)
+
+//                     +--active()
+//                         background-color: lightness(colors.white, 95%)
+//                         color: colors.c1
+
+//     &tertiary
+//         +attr-contains()
+//             set(edge-tint, hsla(colors.tint))
+//             background-color: hsla(colors.c2)
+//             color: colors.white
+
+//     &shade
+//         &10
+//             +attr-contains()
+//                 background-color: hsla(colors.shade, .10)
+
+// .rx{":"}
+//     &shade
+//         &10
+//             +attr-contains()
+//                 +--all-states()
+//                     background-color: hsla(colors.shade, .10)

@@ -1,0 +1,81 @@
+.type{":"}
+    &broadside
+        +contains()
+            typeSet: broadside
+
+    &display
+        +contains()
+            typeSet: display
+    &xhed
+        +contains()
+            typeSet: xhed
+
+    &hed
+        +contains()
+            typeSet: hed
+
+    &subhed
+        +contains()
+            typeSet: subhed
+
+    &major
+        +contains()
+            typeSet: major
+
+    &base
+        +contains()
+            typeSet: base
+
+    &minor
+        +contains()
+            typeSet: minor
+
+    &chrome
+        +contains()
+            typeSet: chrome
+
+    &caption
+        +contains()
+            typeSet: caption
+
+
+
+
+.--face{":"}
+    &hed
+        +contains()
+            stack: header
+
+    &copy
+        +contains()
+            stack: copy
+
+    &chrome
+        +contains()
+            stack: chrome
+
+
+.--h{":"}
+    &underline
+        +contains()
+            +--all-states()
+                text-decoration: underline
+
+
+.copy
+    a
+        text-decoration: underline
+        transition-property: color
+        transition-duration: fx.quick.time
+        transition-timing-function: fx.quick.func
+
+//     h3
+//         font-weight: 700
+//         margin-bottom: ratio(.5)
+//         color: colors.neutral
+
+//         &:not(:first-of-type)
+//             margin-top: ratio(2)
+
+//     strong
+//         color: colors.c1

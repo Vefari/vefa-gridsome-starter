@@ -1,0 +1,291 @@
+// // @domain      ELEMENT DIMENSIONS
+// // @namespace   aspect (layout)
+// // +++++++++++++++++++++++++++++++++
+
+.aspect{":"}
+    +contains()
+        width: 100%
+
+    &full
+        +contains()
+            padding-x: "calc( (100vw - %s) / 2)" % maxSiteWidth
+
+    &hFull
+        +contains()
+            min-height: 100vh
+
+    &auto
+        +contains()
+            sq: auto
+            max-height: none
+
+    &xEq
+        +contains()
+            max-width: 1px
+
+    // &yEq
+    //     +contains()
+    //         overflow: hidden
+
+    &xyEq
+        +contains()
+            max-height: 1px
+            min-height: 1px
+            max-width: 1px
+            // overflow: hidden
+
+// @domain      ELEMENT PERCENTAGE DIMENSIONS
+// @namespace   pct--xEq, pct--yEq, pct--xyEq
+// +++++++++++++++++++++++++++++++++
+if !!((limits.dx)px)
+    {":"}xEq
+        for num in (5..limits.dx)
+            if (num % 5 == 0)
+                &{num}--pct
+                    +contains()
+                        max-width: '%s%' % num
+
+            if num == 30
+                &33--pct
+                    +contains()
+                        max-width: 33%
+
+            if num == 65
+                &66--pct
+                    +contains()
+                        max-width: 66%
+
+    {":"}xFull--pct
+        +contains()
+            padding-x: "calc( (100vw - %s) / 2)" % maxSiteWidth
+
+    {":"}xAuto--pct
+        +contains()
+            width: auto
+            max-width: none
+
+
+if !!((limits.dy)px)
+    {":"}yEq
+        for num in (5..limits.dy)
+            if (num % 5 == 0)
+                &{num}--pct
+                    +contains()
+                        max-height: '%s%' % num
+                        min-height: '%s%' % num
+
+            if num == 30
+                &33--pct
+                    +contains()
+                        max-height: 33%
+                        min-height: 33%
+
+            if num == 65
+                &66--pct
+                    +contains()
+                        max-height: 66%
+                        min-height: 66%
+
+    {":"}yAuto--pct
+        +contains()
+            height: auto
+            max-height: none
+
+
+if !!((limits.dxy)px)
+    {":"}xyEq
+        for num in (5..limits.dxy)
+            if (num % 5 == 0)
+                &{num}--pct
+                    +contains()
+                        max-height: '%s%' % num
+                        min-height: '%s%' % num
+                        max-width: '%s%' % num
+
+
+            if num == 30
+                &33--pct
+                    +contains()
+                        max-height: 33%
+                        min-height: 33%
+                        max-width: 33%
+
+            if num == 65
+                &66--pct
+                    +contains()
+                        max-height: 66%
+                        min-height: 66%
+                        max-width: 66%
+
+    {":"}xyAuto--pct
+        +contains()
+            sq: auto
+
+
+
+// @domain      ELEMENT VERTICAL RHYTHM DIMENSIONS
+// @namespace   rhy--xEq, rhy--yEq, rhy--xyEq
+// +++++++++++++++++++++++++++++++++
+
+if !!((limits.dyRhy)px)
+    {":"}xEq
+        for i in (limits.dxRhy)
+            num = (i is 0) ? 0 : (i/100)
+            num = (i is 10) ? .125 : num
+            num = (i is 33) ? .375 : num
+            num = (i is 66) ? .625 : num
+
+            &{i}--rhy
+                +contains(0)
+                    max-width: ratio(num)
+
+if !!((limits.dyRhy)px)
+    {":"}yEq
+        for i in (limits.dyRhy)
+            num = (i is 0) ? 0 : (i / 100)
+            num = (i is 10) ? .125 : num
+            num = (i is 33) ? .375 : num
+            num = (i is 66) ? .625 : num
+
+            &{i}--rhy
+                +contains()
+                    max-height: ratio(num)
+                    min-height: ratio(num)
+
+if !!((limits.dxyRhy)px)
+    {":"}xyEq
+        for i in (limits.dxyRhy)
+            num = (i is 0) ? 0 : (i / 100)
+            num = (i is 10) ? .125 : num
+            num = (i is 33) ? .375 : num
+            num = (i is 66) ? .625 : num
+
+            &{i}--rhy
+                +contains()
+                    max-height: ratio(num)
+                    min-height: ratio(num)
+                    max-width: ratio(num)
+
+
+
+// @domain      ELEMENT VIEWPORT WIDTH DIMENSIONS
+// @namespace   view--xEq, view--yEq, view--xyEq
+// +++++++++++++++++++++++++++++++++
+// /:
+if !!((limits.dxView)px)
+    {":"}xEq1--view
+        +contains()
+            max-width: 1vw
+
+    {":"}xEq
+        for num in (5..limits.dxView)
+            if (num % 5 == 0)
+                &{num}--view
+                    +contains()
+                        max-width: '%svw' % num
+
+            if num == 30
+                &33--view
+                    +contains()
+                        max-width: 33vw
+
+            if num == 65
+                &66--view
+                    +contains()
+                        max-width: 66vw
+
+if !!((limits.dyView)px)
+    {":"}yEq1--view
+        +contains()
+            max-height: 1vw
+            min-height: 1vw
+            overflow: hidden
+
+    {":"}yEq
+        for num in (5..limits.dyView)
+            if (num % 5 == 0)
+                &{num}--view
+                    +contains()
+                        max-height: '%svw' % num
+                        min-height: '%svw' % num
+
+            if num == 30
+                &33--view
+                    +contains()
+                        max-height: 33vw
+                        min-height: 33vw
+
+            if num == 65
+                &66--view
+                    +contains()
+                        max-height: 66vw
+                        min-height: 66vw
+
+if !!((limits.dxyView)px)
+    {":"}xyEq1--view
+        +contains()
+            max-height: 1vw
+            min-height: 1vw
+            max-width: 1vw
+            overflow: hidden
+
+    {":"}xyEq
+        for num in (5..limits.dxyView)
+            if (num % 5 == 0)
+                &{num}--view
+                    +contains()
+                        max-height: '%svw' % num
+                        min-height: '%svw' % num
+                        max-width: '%svw' % num
+
+            if num == 30
+                &33--view
+                    +contains()
+                        max-height: 33vw
+                        min-height: 33vw
+                        max-width: 66vw
+
+            if num == 65
+                &66--view
+                    +contains()
+                        max-height: 66vw
+                        min-height: 66vw
+                        max-width: 66vw
+
+
+// @domain      ELEMENT TEXT RELATIVE DIMENSIONS
+// @namespace   text--xEq, text--yEq, text--xyEq
+// +++++++++++++++++++++++++++++++++
+if !!((limits.dxText)px)
+    {":"}xEq
+        for i in (limits.dxText)
+            num = (i is 0) ? 0 : i
+            num = (i is 10) ? .125 : num
+
+            &{i}--text
+                +contains()
+                    max-width: num * .01em
+
+if !!((limits.dyText)px)
+    {":"}yEq
+        for i in (limits.dyText)
+            num = (i is 0) ? 0 : i
+            num = (i is 10) ? .125 : num
+
+            &{i}--text
+                +contains()
+                    max-height: num *.01em
+                    min-height: num *.01em
+
+
+if !!((limits.dxyText)px)
+    {":"}xyEq
+        for i in (limits.dxyText)
+            num = (i is 0) ? 0 : i
+            num = (i is 10) ? .125 : num
+
+            &{i}--text
+                +contains()
+                    max-height: num *.01em
+                    min-height: num *.01em
+                    max-width: num *.01em

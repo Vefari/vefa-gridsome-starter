@@ -1,0 +1,56 @@
+.--def{":"}
+    &onlyStroke
+        +attr-contains()
+            fill: none
+            stroke: currentColor
+
+.color{":"}
+    +class-partial()
+        color: var(--active-fg)
+
+    &primary
+        +class-partial()
+            --active-fg: var(--color-primary)
+
+    &secondary
+        +class-partial()
+            --active-fg: var(--color-secondary)
+
+            &[class*="fx:shift"]
+                +--all-states()
+                    color: colors.c3
+
+    &tertiary
+        +class-partial()
+            c--active-fg: var(--color-tertiary)
+
+    &copy
+        +class-partial()
+            --active-fg: var(--color-copy)
+
+    // ++++++++++++++++++++++++++
+    // &neutral
+    // &tint
+    // &shade
+
+    // ++++++++++++++++++++++++++
+    &minor
+        +class-partial()
+            --active-fg: var(--color-minor)
+
+    // &muted
+    // &bright
+    // &dark
+
+    // ++++++++++++++++++++++++++
+    &affirm
+        +class-partial()
+            --active-fg: var(--color-affirm)
+
+    &notice
+        +class-partial()
+            --active-fg: var(--color-warn)
+
+    &negative
+        +class-partial()
+            --active-fg: var(--color-negative)

@@ -1,0 +1,112 @@
+// @domain  Responsive Fences Attribute Styling
+// helper function
+$sel(selector)
+    sel = "%s" % selector
+    sel = split(" ", sel)
+    sel_length = length(sel)
+
+    if sel_length > 2
+        sel = slice(sel, 2, sel_length)
+
+    sel = join("", sel)
+    sel = replace("\'", "", sel)
+    sel = replace("\.", "", sel)
+    sel = replace(" ", "", sel)
+    // sel = replace(":", "", sel)
+
+    return sel sel_length
+
+
+class-partial()
+    sel = $sel( selector() )[0]
+    selLength = $sel( selector() )[1]
+
+
+    if !$types
+        $types = breakpoints
+
+    classSel = replace("\.", "", selector() )
+    if selLength <= 2
+        /[class*={s("%s", classSel )}]
+            {block}
+    else
+        /^[2] [class*={s("%s", classSel )}]
+                {block}
+
+contains($types=null)
+    sel = $sel( selector() )[0]
+    selLength = $sel( selector() )[1]
+
+
+    if !$types
+        $types = breakpoints
+
+    classSel = replace("\.", "", selector() )
+    if selLength <= 2
+        /[class*={s("%s", classSel )}]
+            {block}
+    else
+        /^[2] [class*={s("%s", classSel )}]
+                {block}
+
+    for $type in $types
+        if breakpoints[$type]
+            if (breakpoints[$type] == 0px)
+                /[o-{$type}*={s("%s", sel)}]
+                    {block}
+            else
+                +over( $type )
+                    /[o-{$type}*={s("%s", sel)}]
+                        {block}
+
+attr-contains($types=null)
+    sel = $sel( selector() )[0]
+    selLength = $sel( selector() )[1]
+
+
+    if !$types
+        $types = breakpoints
+
+    classSel = replace("\.", "", selector() )
+    if selLength <= 2
+        /[class*={s("%s", classSel )}]
+            {block}
+    else
+        /^[2] [class*={s("%s", classSel )}]
+                {block}
+
+    for $type in $types
+        if breakpoints[$type]
+            if (breakpoints[$type] == 0px)
+                /[o-{$type}*={s("%s", sel)}]
+                    {block}
+            else
+                +over( $type )
+                    /[o-{$type}*={s("%s", sel)}]
+                        {block}
+
+
+attr-equals($types=null)
+    sel = $sel( selector() )[0]
+    selLength = $sel( selector() )[1]
+
+    if !$types
+        $types = breakpoints
+
+    classSel = replace("\.", "" selector())
+    if selLength <= 2
+        /[class~={s("%s", classSel )}]
+            {block}
+    else
+        /^[2] [class~={s("%s", classSel )}]
+                {block}
+
+    for $type in $types
+        if breakpoints[$type]
+            if (breakpoints[$type] == 0px)
+                /[o-{$type}~={s("%s", sel)}]
+                    {block}
+            else
+                +over( $type )
+                    /[o-{$type}~={s("%s", sel)}]
+                        {block}

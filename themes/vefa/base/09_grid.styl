@@ -1,0 +1,165 @@
+// @domain      GRID CONTAINERS
+// @namespace   grid
+// +++++++++++++++++++++++++++++++++
+
+:root
+    --col-template: repeat(auto-fill, 1fr)
+    --row-template: auto
+    --gap-xyEq: 0px
+    --gap-xEq: var(--gap-xyEq)
+    --gap-yEq: var(--gap-xyEq)
+
+
+.grid{":"}
+    +contains()
+        --gap-xyEq: 0px
+        --gap-xEq: var(--gap-xyEq)
+        --gap-yEq: var(--gap-xyEq)
+        --grid-iso-xyEq: 0
+        --grid-iso-xEq: var(--grid-iso-xyEq)
+        --grid-iso-yEq: var(--grid-iso-xyEq)
+        --grid-iso-xStart: var(--grid-iso-xEq)
+        --grid-iso-xEnd: var(--grid-iso-xEq)
+        --grid-iso-yStart: var(--grid-iso-yEq)
+        --grid-iso-yEnd: var(--grid-iso-yEq)
+        --col-template: 1fr
+        --row-template: auto
+
+        display: grid
+        gap: var(--gap-yEq) var(--gap-xEq)
+        grid-template-columns: var(--col-template)
+        grid-template-rows: var(--row-template)
+        grid-auto-rows: var(--row-template)
+        grid-auto-columns: var(--col-template)
+        // visibility: visible
+
+        & > * + *
+            margin-top: 0
+
+    &auto
+        +contains()
+            --col-template: repeat(auto-fill, 1fr)
+            grid-auto-flow: row
+
+    &content
+        +contains()
+            // --col-template: 1fr -- already define on .grid:
+            --row-template: 1fr
+            grid-template-columns: var(--grid-iso-xStart) var(--col-template) var(--grid-iso-xEnd)
+            grid-template-rows: var(--grid-iso-yStart) var(--row-template) var(--grid-iso-yEnd)
+
+     &h
+        +contains()
+            // --col-template: 1fr // already defined on .grid:
+            // --col-template: min-content
+            grid-auto-flow: row
+
+    &hDense
+        +contains()
+            grid-auto-flow: column dense
+
+    &v
+        +contains()
+            grid-auto-flow: column
+
+    &vDense
+        +contains()
+            grid-auto-flow: column dense
+
+
+
+
+
+
+// --flow{":"}
+//     v
+//         +contains()
+//             grid-auto-flow: row
+
+// // COLUMNS
+// // ++++++++++++++++++++++++++++++++++
+// --cols{":"}
+//     &Auto
+//         +contains()
+//             --grid-cols: repeat(auto-fill, 1fr)
+
+// // ROWS
+// // ++++++++++++++++++++++++++++++++++
+// --rows{":"}
+//     &Auto
+//         +contains()
+//             --grid-rows: repeat(auto-fill, 1fr)
+
+// GAPS
+// ++++++++++++++++++++++++++++++++++
+--gap{":"}
+    if (!!(limits.gaps)px)
+        &xyEq
+            +contains()
+                --gap-xyEq: 1px
+
+            for i in limits.gaps
+                num = i/100
+                num = (i is 0) ? 0 : num
+                num = (i is 10) ? .125 : num
+
+                &{i}
+                    +contains()
+                        --gap-xyEq: ratio(num)
+
+    if (!!(limits.rowGaps)px)
+        &xEq
+            +contains()
+                --gap-xEq: 1px
+
+            for i in limits.rowGaps
+                num = i/100
+                num = (i is 0) ? 0 : num
+                num = (i is 10) ? .125 : num
+
+                &{i}
+                    +contains()
+                        --gap-xEq: ratio(num)
+
+    if (!!(limits.colGaps)px)
+        &yEq
+            +contains()
+                --gap-yEq: 1px
+
+            for i in limits.colGaps
+                num = i/100
+                num = (i is 0) ? 0 : num
+                num = (i is 10) ? .125 : num
+
+                &{i}
+                    +contains()
+                        --gap-yEq: ratio(num)
+
+
+
+// &fit
+//     ++attr-contains()
+//         > *
+//             min-width: 0
+
+//         img
+//         video
+//         audio
+//         canvas
+//         input
+//         select
+//         button
+//         progress
+//             max-width: 100%
+
+//         [type="file"]
+//         [type="submit"]
+//             white-space: pre-wrap
+
+//         [type="number"]
+//             @supports (--moz-appearance: none)
+//                 width: 100%
+
+//         [type="range"]
+//         progress
+//             width: 100%

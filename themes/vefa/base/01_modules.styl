@@ -1,0 +1,175 @@
+// @domain      MODULE DECLARATIONS
+// @namespace   module
+// +++++++++++++++++++++++++++++++++
+
+.module{":"}
+    +contains()
+        display: block
+        float: none
+        position: relative
+        visibility: visible
+
+    &block
+        +contains()
+            display: block
+
+    &static
+        +contains()
+            flex: none
+
+    &balance
+        +contains()
+            flex: 1 1 auto
+
+    &fit
+        +contains()
+            flex: initial //0 1 auto
+
+    &fill
+        +contains()
+            flex: 1 0 100%
+
+    &bounds
+        +contains()
+            bottom: 0
+            height: 100%
+            left: 0
+            position: absolute
+            right: 0
+            top: 0
+            object-fit: cover
+            width: 100%
+
+
+// MODULE GRID SPANS
+// +++++++++++++++++++++++++++++++++
+// --span{":"}
+//     if !!((limits.gridColumns)px)
+//         gridSpan = limits.gridColumns + 1
+
+//         &xEq
+//             for i in (1..gridSpan)
+//                 &{i}
+//                     +attr-contains()
+//                         grid-column: span i
+
+//         &xStart
+//             for i in (1..gridSpan)
+//                 &{i}
+//                     +attr-contains()
+//                         grid-column-start: i
+
+//         &xEnd
+//             for i in (1..gridSpan)
+//                 &{i}
+//                     +attr-contains()
+//                         grid-column-end: i
+
+//     if !!((limits.gridRows)px)
+//         gridSpan = limits.gridRows + 1
+
+//         &yEq
+//             for i in (1..gridSpan)
+//                 &{i}
+//                     +attr-contains()
+//                         grid-row: span i
+
+//         &yStart
+//             for i in (1..gridSpan)
+//                 &{i}
+//                     +attr-contains()
+//                         grid-row-start: i
+
+//         &yEnd
+//             for i in (1..gridSpan)
+//                 &{i}
+//                     +attr-contains()
+//                         grid-row-end: i
+
+
+// MODULE ORDER
+// +++++++++++++++++++++++++++++++++
+
+--index{":"}
+    &init
+        +contains()
+            order: -1
+
+    &flow
+        +contains()
+            order: initial
+
+    &start
+        +contains()
+            order: 0
+
+    &next
+        +contains()
+            order: 1
+
+    &end
+        +contains()
+            order: 100
+
+
+// -MODULE SELF ALIGNMENT
+// +++++++++++++++++++++++++++++++++
+--self{":"}
+    &auto
+        +contains()
+            align-self: auto
+    // &start
+    //     +attr-contains()
+    //         align-self: flex-start
+    // &end
+    //     +attr-contains()
+    //         align-self: flex-end
+    // &middle
+    //     +attr-contains()
+    //         align-self: center
+    // &full
+    //     +attr-contains()
+    //         align-self: stretch
+    // &base
+    //     +attr-contains()
+    //         align-self: baseline
+
+    &xyEq
+        +contains()
+            align-self: center
+            justify-self: center
+
+    &yBase
+        +contains()
+            align-self: baseline
+
+    &yStart
+        +contains()
+            align-self: flex-start
+
+    &yEnd
+        +contains()
+            align-self: flex-end
+
+    &yEq
+        +contains()
+            align-self: center
+
+    &yFull
+        +contains()
+            align-self: stretch
+
+    &xBase
+        +contains()
+            jusitfy-self: baseline
+
+    &xStart
+        +contains()
+            justify-self: flex-start
+    &xEnd
+        +contains()
+            justify-self: flex-end
+
+    &xEq
+        +contains()
+            justify-self: center

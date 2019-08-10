@@ -1,0 +1,186 @@
+// @domain      ELEMENT TYPOGRAPHICS
+// @namespace   type:
+// +++++++++++++++++++++++++++++++++
+
+
+// -TEXT WEIGHT
+// +++++++++++++++++++++++++++++++++
+--weight{":"}
+    weightDec = typeWeights ? typeWeights : 100 200 300 400 500 600 700 800 900
+
+    for num in weightDec
+        &{num}
+            +contains()
+                font-weight: num
+
+
+
+// --tSpace: LETTER SPACING
+// +++++++++++++++++++++++++++++++++
+--space{":"}
+    &flush
+        +contains()
+            letter-spacing: -.08em
+    &small
+        +contains()
+            letter-spacing: -.04em
+    &init
+        +contains()
+            letter-spacing: 0
+    &medium
+        +contains()
+            letter-spacing: .04em
+    &large
+        +contains()
+            letter-spacing: .08em
+
+--words{":"}
+    &flush
+        +contains()
+            word-spacing: -.1em
+    &tight
+        +contains()
+            word-spacing: -.05em
+    &init
+        +contains()
+            word-spacing: 0
+    &loose
+        +contains()
+            word-spacing: .05em
+    &zoned
+        +contains()
+            word-spacing: .1em
+
+// --t: TEXT ALIGNMENT
+// +++++++++++++++++++++++++++++++++
+--align{":"}
+    &just
+        +contains()
+            text-align: justify
+
+        &{":"}xEq
+            +contains()
+                text-align-last: center
+
+        &{":"}xStart
+            +contains()
+                text-align-last: start
+
+        &{":"}xEnd
+            +contains()
+                text-align-last: end
+
+    &start
+        +contains()
+            text-align: left
+
+    &middle
+        +contains()
+            text-align: center
+
+        &Just
+            +contains()
+                text-align-last: center
+
+    &end
+        +contains()
+            text-align: right
+
+        &Just
+            +contains()
+                text-align-last: right
+
+
+
+// --tt: TEXT TRANSFORM
+// +++++++++++++++++++++++++++++++++
+--case{":"}
+    &init
+        +contains()
+            text-transform: unset
+
+    &cap
+        +contains()
+            text-transform: capitalize
+
+    &upper
+        +contains()
+            text-transform: uppercase
+
+    &lower
+        +contains()
+            text-transform: lowercase
+
+
+
+// --tlh: LINE HEIGHT
+// +++++++++++++++++++++++++++++++++
+--lead{":"}
+    &flush
+        +contains()
+            line-height: 0
+
+    &half
+        +contains()
+            line-height: .5
+
+    &matched
+        +contains()
+            line-height: 1
+
+    &base
+        +contains()
+            line-height: 1.3
+
+    &expand
+        +contains()
+            line-height: 1.5
+
+    &loose
+        +contains()
+            line-height: 1.7
+
+    &double
+        +contains()
+            line-height: 2
+
+
+// --tDrop: SUBTLE TEXT SHADOW
+// +++++++++++++++++++++++++++++++++
+// subtle text shadow
+// /:drop
+//     +contains()
+//         text-shadow: 0 1px 2px hsla(0,0,0,.2)
+
+//     &0
+//         +contains()
+//             text-shadow: none
+
+
+
+// --aa: TEXT ANTI-ALIASING
+// +++++++++++++++++++++++++++++++++
+--def{":"}
+    &aliased
+        +contains()
+            -webkit-font-smoothing: antialiased
+
+    &truncate
+        +contains()
+            display: table
+            table-layout: fixed
+            width: 100%
+            white-space: nowrap
+
+            > *
+                display: table-cell
+                max-width: 100%
+                overflow: hidden
+                text-overflow: ellipsis
+                white-space: nowrap
+                word-wrap: normal
+
+
+    &noWrap
+        +contains()
+            white-space: nowrap

@@ -1,0 +1,88 @@
+// @domain      ELEMENT VERTICAL RHYTHM FLOW
+// @namespace   rhy:
+// +++++++++++++++++++++++++++++++++++++++++
+rhyLimit = limits.rhythms
+
+.rhy{":"}
+    if !!((rhyLimit)px)
+        &xyEq
+            +contains()
+                > * + *
+                    margin: 1px
+
+        &xEq
+            +contains()
+                > * + *
+                    margin-x: 1px
+
+        &xStart
+            +contains()
+                > * + *
+                    margin-left: 1px
+
+        &xEnd
+            +contains()
+                > * + *
+                    margin-right: 1px
+
+        &yEq
+            +contains()
+                > * + *
+                    margin-y: 1px
+
+        &yStart
+            +contains()
+                > * + *
+                    margin-top: 1px
+
+        &yEnd
+            +contains()
+                > * + *
+                    margin-bottom: 1px
+
+        for i in (rhyLimit)
+            num = i/100
+            num = (i is 0) ? 0 : num
+            num = (i is 10) ? .125 : num
+
+            &xyEq
+                &{i}
+                    +contains()
+                        > * + *
+                            margin: ratio(num)
+
+            &xEq
+                &{i}
+                    +contains()
+                        > * + *
+                            margin-x: ratio(num)
+
+            &xStart
+                &{i}
+                    +contains()
+                        > * + *
+                            margin-left: ratio(num)
+
+            &xEnd
+                &{i}
+                    +contains()
+                        > * + *
+                            margin-right: ratio(num)
+
+            &yEq
+                &{i}
+                    +contains()
+                        > * + *
+                            margin-y: ratio(num)
+
+            &yStart
+                &{i}
+                    +contains()
+                        > * + *
+                            margin-top: ratio(num)
+
+            &yEnd
+                &{i}
+                    +contains()
+                        > * + *
+                            margin-bottom: ratio(num)

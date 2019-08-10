@@ -1,0 +1,36 @@
+application-name: Site
+
+# Very short (10 words or less) description. Primarily for academic papers
+abstract: Site Abstract
+
+author: Wellfire Interactive <wellfire@wellfire.co>
+# site developer author information
+# Short description of the page (limit to 150 characters)
+
+# In *some* situations this description is used as a part of the snippet shown in the search results.
+description: Site Decription
+
+# Control the behavior of search engine crawling and indexing
+directory: submission
+
+# verify webdevelopment through Google
+# google-site-verification: verification_token
+
+# Gives a general age rating based on sites content
+rating: General
+
+# Allows control over how referrer information is passed
+referrer: never
+
+# Control the behavior of search engine crawling and indexing
+robots: index,follow,noodp
+
+# Short description of your site's subject
+subject: Site Subject
+
+# Site
+url: site url
+
+
+# link(href="#{ humans_text }", rel="author")
+format-detection: telephone=no

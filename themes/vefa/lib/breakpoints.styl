@@ -1,0 +1,38 @@
+over( min )
+    // serve from above this width
+    min = unquote(min) if typeof(min) is 'string'
+    min = breakpoints[min] if typeof(min) is 'literal'
+    condition = 'only screen and (min-width: %s)' % min
+    @media condition
+        {block}
+
+under( max )
+    // serve to 1px below this width
+    min = unquote(max) if typeof(max) is 'string'
+    min = breakpoints[max] if typeof(max) is 'literal'
+    max = max - 1px
+    condition = 'only screen and (max-width: %s)' % max
+    @media condition
+        {block}
+
+o-compressed()
+    +over("compressed")
+        {block}
+o-condensed()
+    +over("condensed")
+        {block}
+o-economy()
+    +over("economy")
+        {block}
+o-enhanced()
+    +over("enhanced")
+        {block}
+o-standard()
+    +over("standard")
+        {block}
+o-extended()
+    +over("extended")
+        {block}
+o-full()
+    +over("full")
+        {block}

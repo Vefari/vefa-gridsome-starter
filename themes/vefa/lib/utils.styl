@@ -1,0 +1,73 @@
+// base vertical rhythm
+bvr(value=null)
+    if value == 0
+        return 0
+
+    multiplier = baseVerticalRhythm ? baseVerticalRhythm : baseLineHeight
+
+    if value
+            return floor( multiplier * value )
+    else
+        return multiplier
+
+ratio(value=null)
+    if value == 0
+        return 0
+
+    multiplier = baseVerticalRhythm ? baseVerticalRhythm : baseLineHeight
+
+    if value
+            return floor( multiplier * value )
+    else
+        return multiplier
+
+// ==========================================================================
+// Percentage
+//
+//
+percent( numerator, denominator )
+    return unit( (numerator/denominator) * 100, "%")
+
+
+sqrt(x)
+    return math(x, 'sqrt')
+
+
+// ==========================================================================
+// Layers
+//
+//
+_pseudo_layer()
+    bottom: 0
+    content: ""
+    display: block
+    left: 0
+    position: absolute
+    right: 0
+    top: 0
+    z-index: -1
+
+layers()
+    position: relative unless @position
+    z-index: 1 unless @z-index
+
+    &:--layers
+        _pseudo_layer()
+        if block
+            {block}
+
+add-before()
+    position: relative unless @position
+    z-index: 1 unless @z-index
+
+    &::before
+        _pseudo_layer()
+        {block}
+
+add-after()
+    position: relative unless @position
+    z-index: 1 unless @z-index
+
+    &::after
+        _pseudo_layer()
+        {block}

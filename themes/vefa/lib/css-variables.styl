@@ -1,0 +1,67 @@
+set(key, value)
+    {s("--%s", key)}: value
+
+v(val, backup = false)
+    if backup
+        "var(--%s, var(--%s))" % (val backup)
+    else
+        "var(--%s)" % val
+    // unless default
+    //
+
+lux-shift(color, shift)
+    lightness(color, lightness(color) + unit(shift, "%"))
+
+opx-shift(color, shift)
+    alpha(color, alpha(color) + unit(shift, "%"))
+
+sat-shift(color, shift)
+    saturation(color, saturation(color) + unit(shift, "%"))
+
+// =init-break-vars($prefix, $types: config(breakpoints))
+//     $oldType: ""
+//     $valTwo: ""
+//     $valThree: ""
+
+//     @at-root :root
+//         @each $type in $types
+//             @if nth($type, 1) == "base"
+//                 --#{ $prefix }: inherit
+
+//             @else
+//                 @if $oldType == ""
+//                     $valTwo: --#{ $prefix }
+//                     $valThree: $valTwo
+
+//                 @else
+//                     $valTwo: --#{ $prefix }_#{ $oldType }
+//                     $valThree: #{ $valTwo }, var(--#{ $prefix })
+
+
+//                 +over(nth($type, 1))
+//                     --#{ $prefix }_#{ nth($type, 1) }: var(#{ $valThree })
+
+//                 $oldType: nth($type, 1)
+
+
+// =set-break-vars($prop, $prefix, $types: config(breakpoints))
+//     $oldType: ""
+
+//     @each $type in $types
+//         +attr-has($type)
+//             @if nth($type, 1) == "base"
+//                 #{ $prop }: var(--#{ $prefix })
+
+//             @else
+//                 $valOne: --#{ $prefix }_#{ nth($type, 1) }
+//                 $valTwo: ''
+
+//                 @if $oldType == ""
+//                     $valTwo: --#{ $prefix }
+
+//                 @else
+//                     $valTwo: --#{ $prefix }_#{ $oldType }
+
+//                 #{ $prop }: var(#{ $valOne }, #{ $valTwo })
+
+//                 $oldType: nth($type, 1)

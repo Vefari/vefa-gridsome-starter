@@ -1,0 +1,64 @@
+# ++++++++++++++++++++++++++++++++++++++
+# Data and Resources
+# ++++++++++++++++++++++++++++++++++++++
+"@apps": "@/../apps"
+"@components": "@/components"
+"@content": "@/../content"
+"@data": "@/../data"
+"@res": "@/../res"
+"@themes": "@/../themes"
+"@icons": "@themes/Icons"
+# "@pages": "@/pages" - not sure if this is needed
+
+
+# ++++++++++++++++++++++++++++++++++++++
+# Site utils and service APIs
+# ++++++++++++++++++++++++++++++++++++++
+"@store": "@apps/store.js"
+"@services": "@/services"
+"@sources": "@/sources"
+"@utils": "@/utils"
+
+
+# ++++++++++++++++++++++++++++++++++++++
+# Vefa / Vue helpers
+# ++++++++++++++++++++++++++++++++++++++
+"@renderlessTemplate": "@/utils/renderlessTemplate.js"
+"@styleinject": "@/utils/VefaStyleInjector.js"
+
+
+# ++++++++++++++++++++++++++++++++++++++
+# Extensible Element Components
+# ++++++++++++++++++++++++++++++++++++++
+"@blocks": "@elements/blocks"
+"@cards": "@elements/cards"
+"@contacts": "@elements/contacts"
+"@controls": "@elements/controls"
+"@fields": "@elements/fields"
+"@lists": "@elements/lists"
+"@media": "@elements/media"
+
+
+# ++++++++++++++++++++++++++++++++++++++
+# App Components
+# ++++++++++++++++++++++++++++++++++++++
+# used for logging in and testing user activity status
+"@Auth": "@apps/Auth"
+# used to process and set up interactive forms
+"@Forms": "@apps/Forms"
+# used for navigation around application
+"@Navigation": "@apps/Navigation"
+# used for in-page notifications
+"@Notifications": "@apps/Notifications"
+# used for specialized content regarding the site/app's owner/organization
+"@Org": "@apps/Org"
+# components that act as site/app header and footer
+"@Runners": "@apps/Runners"
+# specialized content blocks, can either be located here or in associated application
+"@Strata": "@apps/Strata"
+# general content snippets to use around site
+"@Snippets": "@apps/Snippets"
+# used for any components that pertain to a site's user/profile/settings
+"@Users": "@apps/Users"
+# generalized templates for use in site and application
+"@Views": "@apps/Views"

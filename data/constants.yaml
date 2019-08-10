@@ -1,0 +1,9 @@
+NOTIFICATIONS:
+    DASHBOARD: dasboard:systemMessage
+
+AVAILABLE_ACTIONS:
+    ADD: add
+    DELETE: delete
+    PUBLISH: publish
+    REQUEST: request
+    UPDATE: update

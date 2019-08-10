@@ -1,0 +1,122 @@
+// @domain      ELEMENT POSITIONING
+// @namespace   static:, rel:, abs:, fix:
+// ++++++++++++++++++++++++++++++++++++++
+.abs{":"}
+    +contains()
+        position: absolute
+
+    &xyEq
+        +contains()
+            bottom: 0
+            left: 0
+            height: 100%
+            right: 0
+            top: 0
+            width: 100%
+
+    &xyStart
+        +contains()
+            left: 0
+            right: 0
+
+    &xyEnd
+        +contains()
+            bottom: 0
+            right: 0
+
+    &xEq
+        +contains()
+            left: 0
+            right: 0
+            width: 100%
+
+    &xStart
+        +contains()
+            left: 0
+
+    &xEnd
+        +contains()
+            right: 0
+
+        &--yStart
+            +contains()
+                top: 0
+
+    &yEq
+        +contains()
+            bottom: 0
+            height: 100%
+            top: 0
+
+    &yStart
+        +contains()
+            top: 0
+
+    &yEnd
+        +contains()
+            bottom: 0
+
+
+.sticky{":"}
+    +contains()
+        position: sticky
+
+    &yStart
+        +contains()
+            top: 0
+
+    &yEnd
+        +contains()
+            bottom: 0
+
+.fix{":"}
+    +contains()
+        position: fixed
+
+    &xyEq
+        +contains()
+            bottom: 0
+            left: 0
+            right: 0
+            top: 0
+
+    &xyEnd
+        +contains()
+            right: 0
+            bottom: 0
+
+    &xEq
+        +contains()
+            left: 0
+            right: 0
+            width: 100%
+
+    &xStart
+        +contains()
+            left: 0
+
+    &xEnd
+        +contains()
+            right: 0
+
+    &yEq
+        +contains()
+            bottom: 0
+            height: 100%
+            top: 0
+
+    &yStart
+        +contains()
+            top: 0
+
+    &yEnd
+        +contains()
+            bottom: 0
+
+
+--z{":"}
+    if limits.zIndex
+        for item in limits.zIndex
+            &{item[0]}
+                +contains()
+                    z-index: item[1]

@@ -1,0 +1,102 @@
+// @domain      ELEMENT MARGINS
+// @namespace   iso:
+// +++++++++++++++++++++++++++++++++++++++++
+gridOffsets = limits.gridOffsets
+
+.ofst{":"}
+    if !!((isoLimit)px)
+        &xyEq
+            +contains()
+                --grid-iso-xyEq: 1px
+
+            &Auto
+                +contains()
+                    --grid-iso-xyEq: auto
+        &xEq
+            +contains()
+                --grid-iso-xEq: var(--grid-iso-xyEq, 1px)
+
+            &Auto
+                +contains()
+                    --grid-iso-xEq: auto
+
+        &xStart
+            +contains()
+                --grid-iso-xStart: var(--grid-iso-xEq, 1px)
+
+            &Auto
+                +contains()
+                    --grid-iso-xStart: auto
+
+        &xEnd
+            +contains()
+                --grid-iso-xEnd: var(--grid-iso-xEq, 1px)
+
+            &Auto
+                +contains()
+                    --grid-iso-xEnd: auto
+
+        &yEq
+            +contains()
+                --grid-iso-yEq: var(--grid-iso-xyEq, 1px)
+
+            &Auto
+                +contains()
+                    --grid-iso-yEq: auto
+
+        &yStart
+            +contains()
+                --grid-iso-yStart: var(--grid-iso-yEq, 1px)
+
+            &Auto
+                +contains()
+                    --grid-iso-yStart: auto
+
+        &yEnd
+            +contains()
+                --grid-iso-yEnd: var(--grid-iso-yEq, 1px)
+
+            &Auto
+                +contains()
+                    --grid-iso-yEnd: auto
+
+
+        for i in gridOffsets
+            num = i/100
+            num = (i is 0) ? 0 : num
+            num = (i is 10) ? .125 : num
+
+            &xyEq
+                &{i}
+                    +contains()
+                        --grid-iso-xyEq: ratio(num)
+
+            &xEq
+                &{i}
+                    +contains()
+                        --grid-iso-xEq: ratio(num)
+
+            &xStart
+                &{i}
+                    +contains()
+                        --grid-iso-xStart: ratio(num)
+
+            &xEnd
+                &{i}
+                    +contains()
+                        --grid-iso-xEnd: ratio(num)
+
+            &yEq
+                &{i}
+                    +contains()
+                        --grid-iso-yEq: ratio(num)
+
+            &yStart
+                &{i}
+                    +contains()
+                        --grid-iso-yStart: ratio(num)
+
+            &yEnd
+                &{i}
+                    +contains()
+                        --grid-iso-yEnd: ratio(num)

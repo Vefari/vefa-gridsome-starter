@@ -1,0 +1,17 @@
+siteName: &site Site name
+siteDescription: site description
+siteUrl: &url site url
+
+favicon: src/res/favicon.png
+touchicon: src/res/touchicon.png
+logo: logo.alp.png
+
+org:
+    name: *site
+    shortName: site
+    url: *url
+    phone: 0000000000
+    email:
+    contact:
+        name:
+        email:

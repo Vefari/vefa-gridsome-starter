@@ -1,0 +1,42 @@
+// action states
+--all-states()
+    &:hover,
+    &:focus,
+    &:active,
+    &.is-active
+        {block}
+
+--follows-check()
+    *:checked + &
+        {block}
+
+--hover()
+    &:hover,
+    &.is-reacting
+        {block}
+
+--active()
+    &:focus,
+    &:active,
+    &.is-active
+        {block}
+
+
+// pseudo elements
+--layers()
+    &::before,
+    &::after
+        {block}
+
+// nth-children
+--middle-of-3()
+    &:nth-of-type(3n-1):not(:last-child)
+        {block}
+
+--odd()
+    &:nth-of-type(odd)
+        {block}
+
+--even()
+    &:nth-of-type(even)
+        {block}

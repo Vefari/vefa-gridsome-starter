@@ -1,0 +1,72 @@
+.control{":"}
+    +class-partial()
+        background-color: var(--active-bg)
+        color: var(--active-fg)
+        border-color: var(--active-edge)
+
+    &link
+        +class-partial()
+            --active-bg: bg-color-convert(colors.c1)
+            --active-fg: fg-color-convert(colors.white)
+
+            +--all-states()
+                --sat-bg: 30%
+
+        &--ghost
+            +class-partial()
+                background-color: var(--active-fg)
+                color: var(--active-bg)
+
+                +--all-states()
+                    --lux-fg: 95%
+
+    &action
+        +class-partial()
+            --alpha-fg: .75
+            --active-bg: bg-color-convert(colors.c3)
+            --active-fg: fg-color-convert(colors.white)
+
+            +--all-states()
+                --sat-bg: 50%
+
+    &muted
+        +class-partial()
+            --active-bg: bg-color-convert(colors.white)
+            --active-fg: fg-color-convert(colors.c1)
+
+            +--all-states()
+                --lux-bg: 75%
+                --lux-fg: 100%
+
+            +--active()
+                --lux-bg: 95%
+                --lux-fg: lightness(colors.c1)
+
+    &neutral
+        +class-partial()
+            --active-bg: bg-color-convert(colors.c2)
+            --active-fg: fg-color-convert(colors.c2)
+            --lux-bg: 68%
+            --lux-fg: 23%
+
+            +--all-states()
+                --sat-bg: 15%
+
+    &pro
+        +class-partial()
+            --active-bg: bg-color-convert(colors.affirm)
+            --active-fg: fg-color-convert(colors.white)
+            --lux-bg: 50%
+            --alpha-fg: .75
+
+            +--all-states()
+                --sat-bg: 60%
+
+    &anti
+        +class-partial()
+            --alpha-fg: .75
+            --active-bg: bg-color-convert(colors.negative)
+            --active-fg: fg-color-convert(colors.white)
+
+            +--all-states()
+                --sat-bg: 65%
